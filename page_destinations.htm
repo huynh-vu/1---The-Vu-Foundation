@@ -1,0 +1,213 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>The Points Kid</title>
+
+  <!-- Tab Icon-->
+  <link rel="shortcut icon" href="images\nerd_glasses.ico"/>
+
+  <!-- Latest compiled and minified Twitter CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  <!-- Required Twitter metatags -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta charset="UTF-8" />
+
+  <!-- Personal CSS -->
+  <link href="MyStyleSheet.css" rel=stylesheet type = "text/css">
+
+  <!-- Google Maps Script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" charset="utf-8">
+
+		function output(){
+		    var allowance = document.getElementById('allowance').value;
+			var rent = document.getElementById('rent').value;
+		    document.getElementById('result').innerHTML = parseInt(allowance) - parseInt(rent);
+		}
+	</script>
+
+<script language="javascript" type="text/javascript">
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+
+<script type="text/javascript" language="javascript" charset="utf-8">
+window.update = function() {
+  var income = document.getElementById('Income'),
+      rent = document.getElementById('rent'),
+      food = document.getElementById('food'),
+      leftover= document.getElementById('leftover');
+
+  leftover.value = parseInt(income.value) - parseInt(rent.value) - parseInt(food.value);
+  q1_1.value = parseInt(income.value) - parseInt(rent.value) - parseInt(food.value);
+  q1_2.value = 2 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q1_3.value = 3 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q1_4.value = 4 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q2_1.value = 5 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q2_2.value = 6 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q2_3.value = 7 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q2_4.value = 8 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q3_1.value = 9 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q3_2.value = 10 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q3_3.value = 11 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+  q3_4.value = 12 * (parseInt(income.value) - parseInt(rent.value) - parseInt(food.value));
+}
+
+</script>
+
+<!-- GOOGLE MAPS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+<script>
+	$("#text").autoSave(function() {
+    var time = new Date().getTime();
+    $("#msg").text("Draft Autosaved " + time);
+}, 500);
+
+/*update sliders calculation*/
+	function updateTextInputRent(val) {
+      document.getElementById('RentInput').value=val; 
+      RentOutput.value = parseInt(RentInput.value) * 2.25;
+      TotalOutput.value = parseInt(RentOutput.value)
+      	+ parseInt(FoodOutput.value)
+      	+ parseInt(TransportationOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value);
+      TotalOutputAnnual.value = TotalOutput.value * 12;
+    }
+    function updateTextInputFood(val) {
+      document.getElementById('FoodInput').value=val; 
+      FoodOutput.value = parseInt(FoodInput.value) * 2.25;
+      TotalOutput.value = parseInt(RentOutput.value)
+      	+ parseInt(FoodOutput.value)
+      	+ parseInt(TransportationOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value); 
+      TotalOutputAnnual.value = TotalOutput.value * 12;
+    }
+    function updateTextInputTransportation(val) {
+      document.getElementById('TransportationInput').value=val; 
+      TransportationOutput.value = parseInt(TransportationInput.value) * 2.25;
+      TotalOutput.value = parseInt(RentOutput.value)
+      	+ parseInt(FoodOutput.value)
+      	+ parseInt(TransportationOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value);
+      TotalOutputAnnual.value = TotalOutput.value * 12;
+    }
+    function updateTextInputInsurance(val) {
+      document.getElementById('InsuranceInput').value=val; 
+      InsuranceOutput.value = parseInt(InsuranceInput.value) * 2.25;
+      TotalOutput.value = parseInt(RentOutput.value)
+      	+ parseInt(FoodOutput.value)
+      	+ parseInt(TransportationOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value);
+      TotalOutputAnnual.value = TotalOutput.value * 12;
+    }
+    function updateTextInputTravel(val) {
+      document.getElementById('TravelInput').value=val; 
+      TravelOutput.value = parseInt(TravelInput.value) * 4.5;
+      TotalOutput.value = parseInt(RentOutput.value)
+      	+ parseInt(FoodOutput.value)
+      	+ parseInt(TransportationOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value);
+      TotalOutputAnnual.value = TotalOutput.value * 12;
+    }
+    function updateTextInputPersonal(val) {
+      document.getElementById('PersonalInput').value=val; 
+      PersonalOutput.value = parseInt(PersonalInput.value) * 2.25;
+      TotalOutput.value = parseInt(RentOutput.value)
+      	+ parseInt(FoodOutput.value)
+      	+ parseInt(TransportationOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value);
+      TotalOutputAnnual.value = TotalOutput.value * 12;
+    }
+
+
+
+
+</script>
+
+<!--https://www.google.com/maps/d/edit?mid=12C4Xmzfy3Vx2ACtOjs54jddELRE-->
+</head>
+<body>
+
+<center>
+<!--GOOGLE MAPS
+<div id="map">
+	<iframe src="https://www.google.com/maps/d/embed?mid=12C4Xmzfy3Vx2ACtOjs54jddELRE" width="100%" height="100%"></iframe>
+</div>
+-->
+</center>
+	<div class = "container">
+	<div class = "inner-inner-container">
+<a href = "page_raise.htm">Raise Rate</a>
+      <br>
+<a href = "page_credit_card_calculator.htm">Manufactured Spend</a>
+<br>
+<a href = "page_destinations.htm">Destinations</a>
+<br>
+      <a href = "page_stocks.htm">Stocks</a>
+	</div>
+	<div class = "inner-container">
+	
+	</div>
+	<center>
+		<div id="linkedin">
+				<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+				<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="huynhvietvu"><a class="LI-simple-link" href='https://www.linkedin.com/in/huynhvietvu?trk=profile-badge'></a></div>
+		</div>
+		<br>
+		<br>
+		<div class = "section">	
+		<center>
+				<div class = "row">
+					<div class= "right">
+						
+									<div id="map">
+										<iframe src="https://www.google.com/maps/d/embed?mid=12C4Xmzfy3Vx2ACtOjs54jddELRE" width="100%" height="100%"></iframe>
+									</div>
+					
+					<br>
+					</div>
+				</div>
+			</center>
+		</div>
+	</div>	
+<br>
+<br>
+<br>
+</center>
+
+</body>
+
+</html>

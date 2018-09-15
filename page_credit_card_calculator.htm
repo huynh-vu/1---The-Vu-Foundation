@@ -1,0 +1,227 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>The Points Kid</title>
+
+	<!-- Tab Icon-->
+	<link rel="shortcut icon" href="images\nerd_glasses.ico"/>
+
+	<!-- Latest compiled and minified Twitter CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<!-- Required Twitter metatags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta charset="UTF-8" />
+
+	<!-- Personal CSS -->
+	<link href="MyStyleSheet.css" rel=stylesheet type = "text/css">
+
+	<!-- Google Maps Script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+/*update sliders' calculation*/
+	function updateTextInputRent(val) {
+      RentInput.value=val; 
+      RentOutput.value = Math.round(parseInt(RentInput.value) * .25);
+      TotalOutputPoints.value = Math.round(parseInt(RentOutput.value)
+      	+ parseInt(GroceryOutput.value)
+      	+ parseInt(GasOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value));
+      TotalOutputDollars.value = TotalOutputPoints.value / 100;
+      document.getElementById('RangeInputRent').value=val;
+    }
+    function updateTextInputGrocery(val) {
+      document.getElementById('GroceryInput').value=val; 
+      GroceryOutput.value = Math.round(parseInt(GroceryInput.value) * 7.5);
+      TotalOutputPoints.value = Math.round(parseInt(RentOutput.value)
+      	+ parseInt(GroceryOutput.value)
+      	+ parseInt(GasOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value)); 
+      TotalOutputDollars.value = TotalOutputPoints.value / 100;
+      document.getElementById('RangeInputGrocery').value=val;
+    }
+    function updateTextInputGas(val) {
+      document.getElementById('GasInput').value=val; 
+      GasOutput.value = Math.round(parseInt(GasInput.value) * 5);
+      TotalOutputPoints.value = Math.round(parseInt(RentOutput.value)
+      	+ parseInt(GroceryOutput.value)
+      	+ parseInt(GasOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value));
+      TotalOutputDollars.value = TotalOutputPoints.value / 100;
+      document.getElementById('RangeInputGas').value=val;
+    }
+    function updateTextInputInsurance(val) {
+      document.getElementById('InsuranceInput').value=val; 
+      InsuranceOutput.value = Math.round(parseInt(InsuranceInput.value) * 2.25);
+      TotalOutputPoints.value = Math.round(parseInt(RentOutput.value)
+      	+ parseInt(GroceryOutput.value)
+      	+ parseInt(GasOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value));
+      TotalOutputDollars.value = TotalOutputPoints.value / 100;
+      document.getElementById('RangeInputInsurance').value=val;
+    }
+    function updateTextInputTravel(val) {
+      document.getElementById('TravelInput').value=val; 
+      TravelOutput.value = Math.round(parseInt(TravelInput.value) * 4.5);
+      TotalOutputPoints.value = Math.round(parseInt(RentOutput.value)
+      	+ parseInt(GroceryOutput.value)
+      	+ parseInt(GasOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value));
+      TotalOutputDollars.value = TotalOutputPoints.value / 100;
+      document.getElementById('RangeInputTravel').value=val;
+    }
+    function updateTextInputPersonal(val) {
+      document.getElementById('PersonalInput').value=val; 
+      PersonalOutput.value = Math.round(parseInt(PersonalInput.value) * 2.25);
+      TotalOutputPoints.value = Math.round(parseInt(RentOutput.value)
+      	+ parseInt(GroceryOutput.value)
+      	+ parseInt(GasOutput.value)
+      	+ parseInt(InsuranceOutput.value)
+      	+ parseInt(TravelOutput.value)
+      	+ parseInt(PersonalOutput.value));
+      TotalOutputDollars.value = TotalOutputPoints.value / 100;
+      document.getElementById('RangeInputPersonal').value=val;
+    }
+</script>
+</head>
+
+<body>
+	<div class = "container">
+		<div class = "inner-container">
+		</div>
+		<div class = "inner-inner-container">
+			<a href = "page_raise.htm">Raise Rate</a>
+			<br>
+			<a href = "page_credit_card_calculator.htm">Manufactured Spend</a>
+			<br>
+			<a href = "page_destinations.htm">Destinations</a>
+			<br>
+			<a href = "page_stocks.htm">Stocks</a>
+		</div>
+		<center>
+		<div id="linkedin">
+				<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+				<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="huynhvietvu"><a class="LI-simple-link" href='https://www.linkedin.com/in/huynhvietvu?trk=profile-badge'></a></div>
+		</div>
+			<br>
+			<br>
+			<div class = "section">	
+			<center>
+				<div class = "row">
+					<div class= "right">
+						<form>
+						<div class="input-group">
+
+							<span class="input-group-addon" style="width:100px">Rent</span>
+							<input class="form-control" type="range" style="width:150px" id="RangeInputRent" name="RangeInputRent" step="10" min="0" max="2700" value="1350" oninput="updateTextInputRent(this.value);">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="RentInput" value="1350" style="width:40px; text-align:right;" oninput="updateTextInputRent(this.value)" aria-label="Amount (to the nearest dollar)">
+							<span class="input-group-addon">x</span>
+							<input type="text" class="form-control" value="0.25" style="width:35px; text-align:center;" disabled>
+							<span class="input-group-addon">=</span>
+							<input type="label" class="form-control" id="RentOutput" value="338" style="width:40px; text-align:right;" disabled>	
+						</div>
+
+						<div class="input-group">
+							<span class="input-group-addon" style="width:100px">Grocery</span>
+							<input class="form-control" type="range" style="width:150px" id="RangeInputGrocery" name="RangeInputGrocery" step="10" min="0" max="600" value="300" oninput="updateTextInputGrocery(this.value);">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="GroceryInput" value="300" style="width:40px; text-align:right;" oninput="updateTextInputGrocery(this.value);" aria-label="Amount (to the nearest dollar)">
+							<span class="input-group-addon">x</span>
+							<input type="text" class="form-control" value="7.50" style="width:35px; text-align:center;" disabled>
+							<span class="input-group-addon">=</span>
+							<input type="label" class="form-control" id="GroceryOutput" value="2250" style="width:40px; text-align:right;" disabled>
+						</div>
+						
+
+						<div class="input-group">
+							<span class="input-group-addon" style="width:100px">Gas</span>
+							<input class="form-control" type="range" style="width:150px" id="RangeInputGas" name="RangeInputGas" step="10" min="0" max="300" value="150" oninput="updateTextInputGas(this.value);">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="GasInput" value="150" style="width:40px; text-align:right;" oninput="updateTextInputGas(this.value);" aria-label="Amount (to the nearest dollar)">
+							<span class="input-group-addon">x</span>
+							<input type="text" class="form-control" value="5.00" style="width:35px; text-align:center;" disabled>
+							<span class="input-group-addon">=</span>
+							<input type="label" class="form-control" id="GasOutput" value="750" style="width:40px; text-align:right;" disabled>
+						</div>
+						
+
+						<div class="input-group">
+							<span class="input-group-addon" style="width:100px">Insurance</span>
+							<input class="form-control" type="range" style="width:150px" id="RangeInputInsurance" name="RangeInputInsurance" step="10" min="0" max="500" value="250" oninput="updateTextInputInsurance(this.value);">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="InsuranceInput" value="250" style="width:40px; text-align:right;" oninput="updateTextInputInsurance(this.value);" aria-label="Amount (to the nearest dollar)">
+							<span class="input-group-addon">x</span>
+							<input type="text" class="form-control" value="2.25" style="width:35px; text-align:center;" disabled>
+							<span class="input-group-addon">=</span>
+							<input type="label" class="form-control" id="InsuranceOutput" value="563" style="width:40px; text-align:right;" disabled>
+						</div>
+						
+
+						<div class="input-group">
+							<span class="input-group-addon" style="width:100px">Travel</span>
+							<input class="form-control" type="range" style="width:150px" id="RangeInputTravel" name="RangeInputTravel" step="10" min="0" max="500" value="250" oninput="updateTextInputTravel(this.value);">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="TravelInput" value="250" style="width:40px; text-align:right;" oninput="updateTextInputTravel(this.value);" aria-label="Amount (to the nearest dollar)">
+							<span class="input-group-addon">x</span>
+							<input type="text" class="form-control" value="4.50" style="width:35px; text-align:center;" disabled>
+							<span class="input-group-addon">=</span>
+							<input type="label" class="form-control" id="TravelOutput" value="1125" style="width:40px; text-align:right;" disabled>
+						</div>
+
+
+						<div class="input-group">
+							<span class="input-group-addon" style="width:100px">Personal</span>
+							<input class="form-control" type="range" style="width:150px" id="RangeInputPersonal" name="RangeInputPersonal" step="10" min="0" max="450" value="225" oninput="updateTextInputPersonal(this.value);">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="PersonalInput" value="100" style="width:40px; text-align:right;" oninput="updateTextInputPersonal(this.value);" aria-label="Amount (to the nearest dollar)">
+							<span class="input-group-addon">x</span>
+							<input type="text" class="form-control" value="2.25" style="width:35px; text-align:center;" disabled>
+							<span class="input-group-addon">=</span>
+							<input type="label" class="form-control" id="PersonalOutput" value="225" style="width:40px; text-align:right;" disabled>
+						</div>
+						<br>
+						<center>
+						<div class="input-group" style="width:220px; text-align:center;">
+							<input type="text" class="form-control" id="TotalOutputPoints" value="5251">
+							<span class="input-group-addon">points per month</span>
+						</div>
+						OR
+						<br>
+						<div class="input-group" style="width:210px; text-align:center;">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="TotalOutputDollars" value="52.51">
+							<span class="input-group-addon">per month</span>
+						</div>
+						</form>
+						<center>
+						
+	
+						<br>
+					</div>
+				</div>
+				</center>
+			</div>
+		</div>	
+<br>
+<br>
+<br>
+</center>
+<!-- DO NOT MOVE THIS SCRIPT -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>The Points Kid</title>
+
+	<!-- Tab Icon-->
+	<link rel="shortcut icon" href="images\nerd_glasses.ico"/>
+
+	<!-- Latest compiled and minified Twitter CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<!-- Required Twitter metatags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta charset="UTF-8" />
+
+	<!-- Personal CSS -->
+	<link href="MyStyleSheet.css" rel=stylesheet type = "text/css">
+
+	<!-- Google Maps Script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<div class = "container">
+		<div class = "inner-container">
+		</div>
+		<div class = "inner-inner-container">
+			<!-- 
+			<a href = "page_raise.htm">Raise Rate</a>
+			<br>
+			<a href = "page_credit_card_calculator.htm">Manufactured Spend</a>
+			<br>
+			<a href = "page_destinations.htm">Destinations</a>
+			<br>
+			<a href = "page_stocks.htm">Stocks</a>
+			-->
+		</div>
+		<center>
+		<div id="linkedin">
+				<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+				<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="huynhvietvu"><a class="LI-simple-link" href='https://www.linkedin.com/in/huynhvietvu?trk=profile-badge'></a></div>
+		</div>
+		<br>
+		<br>
+		<div class = "section">	
+		<center>
+			<div class = "row">
+				<div class= "right">
+					<!-- Display the countdown timer in an element -->
+
+					<center>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<p style="font-size:50px" id="demo"></p>
+					</center>
+
+					<script>
+					// Set the date we're counting down to
+					var countDownDate = new Date("Oct 13, 2017 09:30:00").getTime();
+
+					// Update the count down every 1 second
+					var x = setInterval(function() {
+
+					  // Get todays date and time
+					  var now = new Date().getTime();
+
+					  // Find the distance between now an the count down date
+					  var distance = countDownDate - now;
+
+					  // Time calculations for days, hours, minutes and seconds
+					  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+					  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+					  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+					  // Display the result in the element with id="demo"
+					  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+					  + minutes + "m " + seconds + "s ";
+
+					  // If the count down is finished, write some text 
+					  if (distance < 0) {
+					    clearInterval(x);
+					    document.getElementById("demo").innerHTML = "EXPIRED";
+					  }
+					}, 1000);
+					</script>
+				</div>
+			</div>
+		</center>
+		</div>
+	</div>	
+<br>
+<br>
+<br>
+<!-- DO NOT MOVE THIS SCRIPT -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
