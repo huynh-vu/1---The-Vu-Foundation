@@ -4,6 +4,5 @@ git commit -m "updated website"
 git push
 
 osascript -e 'tell application "Terminal" to quit' &
-pause
 exit
 
