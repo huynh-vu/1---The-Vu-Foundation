@@ -28,9 +28,9 @@ gui, add, groupbox, section w1075 h950 center, INVENTORY ;w1875
 gui, font,
 gui, add, text, 0x8 h18 w100 xs+10 yp+25 right, Search Product:  
 gui, add, edit, 0x8 h18 w200 x+8 vA_SearchTerm gSearchProduct left, 
-gui, add, button, 0x8 h18 w100 x+442 gAddProduct, Add Product
+gui, add, button, border w100 x+642 gAddProduct, + ADD PRODUCT
 gui, font, s11
-Gui, add, listview, 0x8000 0x400000 r43 w1050 yp+22 xs+10 grid vlistviewproducts geditproduct vscroll, Barcode|Product|Sales|Cost|Quantity|Restock|Tax|Vendor|Last Updated ;w1850
+Gui, add, listview, 0x8000 0x400000 r43 w1050 yp+25 xs+10 grid vlistviewproducts geditproduct vscroll, Barcode|Product|Sales|Cost|Quantity|Capacity|Tax|Vendor|Last Updated|Notes ;w1850
 gosub, sub_load_listview_products
 total_expenses := 0
 gui, font, 

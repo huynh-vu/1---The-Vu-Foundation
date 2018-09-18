@@ -314,6 +314,7 @@ sub_load_listview_products:
 	item7 :=
 	item8 :=
 	item9 :=
+	item10 :=
 	gui, 1: default
 	gui, 1: listview, listviewproducts
 	lv_delete()
@@ -325,9 +326,11 @@ sub_load_listview_products:
 	list_product_price_cost_quantity_capacity_tax = 
 	list_product_price_cost_quantity_capacity_tax_vendor = 
 	list_product_price_cost_quantity_capacity_tax_vendor_lastupdated = 
+	list_product_price_cost_quantity_capacity_tax_vendor_lastupdated_notes = 
 	loop, read, %a_scriptdir%\data\products.csv
 	{
 		item9 :=
+		item10 :=
 		gui, 1: default
 		gui, 1: listview, listviewproducts
 	   	StringSplit, item, A_LoopReadLine, `,
@@ -337,7 +340,7 @@ sub_load_listview_products:
 	   	item4 = $%item4%
 	   	if item1 !=
 	   	{
-	   		LV_Add("", item1, item2, item3, item4, item5, item6, item7, item8, item9)
+	   		LV_Add("", item1, item2, item3, item4, item5, item6, item7, item8, item9, item10)
 	   	}
 		list_product = %list_product%%item2%|
 		list_product_price = %list_product_price%%item2%,%item3%|
@@ -346,7 +349,8 @@ sub_load_listview_products:
 		list_product_price_cost_quantity_capacity = %list_product_price_cost_quantity%%item1%,%item2%,%item3%,%item4%,%item5%,%item6%|
 		list_product_price_cost_quantity_capacity_tax = %list_product_price_cost_quantity_capacity_tax%%item1%,%item2%,%item3%,%item4%,%item5%,%item6%,%item7%|
 		list_product_price_cost_quantity_capacity_tax_vendor = %list_product_price_cost_quantity_capacity_tax_vendor%%item1%,%item2%,%item3%,%item4%,%item5%,%item6%,%item7%,%item8%|
-		list_product_price_cost_quantity_capacity_tax_vendor_lastupdated = %list_product_price_cost_quantity_capacity_tax_vendor%%item1%,%item2%,%item3%,%item4%,%item5%,%item6%,%item7%,%item8%,%item9%|
+		list_product_price_cost_quantity_capacity_tax_vendor_lastupdated = %list_product_price_cost_quantity_capacity_tax_vendor_lastupdated%%item1%,%item2%,%item3%,%item4%,%item5%,%item6%,%item7%,%item8%,%item9%|
+		list_product_price_cost_quantity_capacity_tax_vendor_lastupdated_notes = %list_product_price_cost_quantity_capacity_tax_vendor_lastupdated_notes%%item1%,%item2%,%item3%,%item4%,%item5%,%item6%,%item7%,%item8%,%item9%,item10|
 	}
 	LV_ModifyCol(1, "center")
 	LV_ModifyCol(2, "440")
@@ -356,7 +360,8 @@ sub_load_listview_products:
 	LV_ModifyCol(6, "60 center")
 	LV_ModifyCol(7, "60 center")
 	LV_ModifyCol(8, "125 left")
-	LV_ModifyCol(9, "100 left")
+	LV_ModifyCol(9, "100 center")
+	LV_ModifyCol(10, "0")
 	return
 }
 
@@ -505,6 +510,7 @@ editproduct:
 	get_product_capacity =
 	get_product_tax =
 	get_product_vendor =
+	get_product_notes =
 	gui, 1: listview, listviewproducts
 	LV_GetText(get_product_barcode, A_EventInfo, 1)
 	LV_GetText(get_product_name, A_EventInfo, 2)
@@ -514,59 +520,75 @@ editproduct:
 	LV_GetText(get_product_capacity, A_EventInfo, 6)
 	LV_GetText(get_product_tax, A_EventInfo, 7)
 	LV_GetText(get_product_vendor, A_EventInfo, 8)
+	LV_GetText(get_product_notes, A_EventInfo, 10)
 	gui, 10: font, bold c s12, arial
 	gui, 10: add, groupbox, section w850 r10 center, Product Information
 	gui, 10: font,
-	gui, 10: add, picture, +border w200 h200 xs+10 yp+23 vproduct_image, %a_scriptdir%\images\image_%get_product_name%.png
-	gui, 10: add, button, w200 xs+10 yp+205 gupload_product_image, Upload Photo...
-	
+	gui, 10: add, picture, +border w250 h250 xs+10 yp+23 vproduct_image, %a_scriptdir%\images\image_%get_product_name%.png
 	gui, 10: font, s11
+	gui, 10: add, button, w252 xs+10 yp+250 gupload_product_image border, Upload Photo...
+	StringReplace, get_product_notes, get_product_notes, ///, `n, All ; replace newlines 
 	if new_barcode =
 	{
-		gui, 10: add, text, w55 x+60 right yp-200, Barcode:
-		gui, 10: add, edit, x+5 w250 vnew_product_barcode, %get_product_barcode%
-		gui, 10: add, text, w55 xs+270 right yp+27, Name:
-		gui, 10: add, edit, x+5 w250 r2 vnew_product_name, %get_product_name%
-		gui, 10: add, text, w55 xs+270 right yp+44, Sale:
-		gui, 10: add, edit, x+5 w250 vnew_product_price, %get_product_price%
+		;reformat notes
+		
+
+		gui, 10: add, text, w55 x+12 right yp-245, Barcode:
+		gui, 10: add, edit, x+5 w45 yp-3 vnew_product_barcode disabled center, %get_product_barcode%
+		gui, 10: add, text, w55 x+5 yp+3 right, Name:
+		gui, 10: add, edit, x+5 w400 yp-3 vnew_product_name, %get_product_name%
+		gui, 10: add, text, xs+270 yp+32 w572 h2 0x10 ;Horizontal Line > Black
+		gui, 10: add, text, w55 xs+270 right yp+10, Price:
+		gui, 10: add, edit, x+5 w110 vnew_product_price center, %get_product_price%
+		gui, 10: add, text, w75 x+5 right, Quantity
+		gui, 10: add, edit, x+5 w110 vnew_product_quantity center, %get_product_quantity%
+		gui, 10: add, text, w75 x+5 right, Tax?:
+		gui, 10: add, edit, x+5 w120 vnew_product_tax center, %get_product_tax%
 		gui, 10: add, text, w55 xs+270 right yp+27, Cost:
-		gui, 10: add, edit, x+5 w250 vnew_product_cost, %get_product_cost%
-		gui, 10: add, text, w55 xs+270 right yp+27, Quantity:
-		gui, 10: add, edit, x+5 w250 vnew_product_quantity, %get_product_quantity%
-		gui, 10: add, text, w55 xs+270 right yp+27, Capacity:
-		gui, 10: add, edit, x+4 w250 vnew_product_capacity, %get_product_capacity%
-		gui, 10: add, text, w55 xs+270 right yp+27, Tax:
-		gui, 10: add, edit, x+5 w250 vnew_product_tax, %get_product_tax%
-		gui, 10: add, text, w55 xs+270 right yp+27, Vendor:
-		gui, 10: add, edit, x+5 w250 vnew_product_vendor, %get_product_vendor%
+		gui, 10: add, edit, x+5 w110 vnew_product_cost center, %get_product_cost%
+		gui, 10: add, text, w75 x+5 right, Capacity:
+		gui, 10: add, edit, x+5 w110 vnew_product_capacity center, %get_product_capacity%
+		gui, 10: add, text, w75 x+5 right, Vendor:
+		gui, 10: add, edit, x+5 w120 vnew_product_vendor center, %get_product_vendor%
+		gui, 10: add, text, w200 xs+320 right yp+30, Wholesale #:
+		gui, 10: add, edit, x+5 w110 yp-3 vwholesale_quantity gwholesalequantity center, 
+		gui, 10: add, text, x+5 w65 yp+3 vwholesale_price, 
+		gui, 10: add, text, xs+270 yp+30 w572 h2 0x10 ;Horizontal Line > Black
+		gui, 10: add, text, w55 xs+270 right yp+8, Notes:
+		gui, 10: add, edit, x+5 w510 r6 vnew_product_notes, %get_product_notes%
 	}
 	else
 	{
-		gui, 10: add, text, w55 x+60 right yp-200, Barcode:
-		gui, 10: add, edit, x+5 w250 vnew_product_barcode, 
-		gui, 10: add, text, w55 xs+270 right yp+27, Name:
-		gui, 10: add, edit, x+5 w250 r2 vnew_product_name,
-		gui, 10: add, text, w55 xs+270 right yp+44, Sale:
-		gui, 10: add, edit, x+5 w250 vnew_product_price, 
+		gui, 10: add, text, w55 x+12 right yp-245, Barcode:
+		gui, 10: add, edit, x+5 w45 yp-3 vnew_product_barcode disabled center, %new_barcode%
+		gui, 10: add, text, w55 x+5 yp+3 right, Name:
+		gui, 10: add, edit, x+5 w400 yp-3 vnew_product_name, 
+		gui, 10: add, text, xs+270 yp+32 w572 h2 0x10 ;Horizontal Line > Black
+		gui, 10: add, text, w55 xs+270 right yp+10, Price:
+		gui, 10: add, edit, x+5 w110 vnew_product_price center, 
+		gui, 10: add, text, w75 x+5 right, Quantity
+		gui, 10: add, edit, x+5 w110 vnew_product_quantity center, 
+		gui, 10: add, text, w75 x+5 right, Tax?:
+		gui, 10: add, edit, x+5 w120 vnew_product_tax center, 
 		gui, 10: add, text, w55 xs+270 right yp+27, Cost:
-		gui, 10: add, edit, x+5 w250 vnew_product_cost, 
-		gui, 10: add, text, w55 xs+270 right yp+27, Quantity:
-		gui, 10: add, edit, x+5 w250 vnew_product_quantity, 
-		gui, 10: add, text, w55 xs+270right yp+27, Capacity:
-		gui, 10: add, edit, x+4 w250 vnew_product_capacity, 
-		gui, 10: add, text, w55 xs+270 right yp+27, Tax:
-		gui, 10: add, edit, x+5 w250 vnew_product_tax, 
-		gui, 10: add, text, w55 xs+270 right yp+27, Vendor:
-		gui, 10: add, edit, x+5 w250 vnew_product_vendor, 
+		gui, 10: add, edit, x+5 w110 vnew_product_cost center, 
+		gui, 10: add, text, w75 x+5 right, Capacity:
+		gui, 10: add, edit, x+5 w110 vnew_product_capacity center, 
+		gui, 10: add, text, w75 x+5 right, Vendor:
+		gui, 10: add, edit, x+5 w120 vnew_product_vendor center, 
+		gui, 10: add, text, w200 xs+320 right yp+30, Wholesale #:
+		gui, 10: add, edit, x+5 w110 yp-3 vwholesale_quantity gwholesalequantity center, 
+		gui, 10: add, text, x+5 w65 yp+3 vwholesale_price, 
+		gui, 10: add, text, xs+270 yp+30 w572 h2 0x10 ;Horizontal Line > Black
+		gui, 10: add, text, w55 xs+270 right yp+8, Notes:
+		gui, 10: add, edit, x+5 w510 r6 vnew_product_notes, 
 	}
 	
 	
-	gui, 10: add, button, xs+350 yp+38 gupdate_product, Update Product Information
+	gui, 10: add, button, w300 xs+430 yp+110 gupdate_product border, Update Product Information
 	gui, 10: show, noactivate, Product Information
 
-	gui, 10: add, text, w125 x+60 right yp-242, Wholesale Quantity:
-	gui, 10: add, edit, x+5 w50 yp-3 vwholesale_quantity gwholesalequantity center, 
-	gui, 10: add, text, x+5 w65 yp+3 vwholesale_price, 
+	
 
 	return
 }
@@ -638,8 +660,6 @@ update_product:
 	Gui, 9: Add, text, w250 h18, Updating Product...
 	Gui, 9: Add, Progress, Range0-1200 horizontal w250 h18 yp+15 vMyProgress
 	Gui, 9: Show, noactivate, 
-	
-
 
 	FileRead, contents, %a_scriptdir%\data\products.csv
 
@@ -663,8 +683,9 @@ update_product:
 	StringReplace, new_product_price, new_product_price, $, , all
 
 	FormatTime, TimeString, T12, yyyy-MM-dd
+	StringReplace, new_product_notes, new_product_notes, `n, ///, All ; replace newlines 
 
-	new_line = %new_product_barcode%,%new_product_name%,%new_product_price%,%new_product_cost%,%new_product_quantity%,%new_product_capacity%,%new_product_tax%,%new_product_vendor%, %TimeString%
+	new_line = %new_product_barcode%,%new_product_name%,%new_product_price%,%new_product_cost%,%new_product_quantity%,%new_product_capacity%,%new_product_tax%,%new_product_vendor%,%TimeString%,%new_product_notes%
 	if new_barcode =
 	{
 		StringReplace, new_contents, contents, %line_to_delete%, %new_line%, all
