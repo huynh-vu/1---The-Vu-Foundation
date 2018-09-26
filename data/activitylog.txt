@@ -1,0 +1,10 @@
+Updated NAME: "NEW12" to "NEW012". 
+Updated PRICE of NEW012 from "0.00" to "0.00". 
+Updated COST of NEW012 from "0.00" to "0.00". 
+Updated QUANTITY of NEW012 from "0" to "0". 
+Updated CAPACITY of NEW012 from "0" to "0". 
+Updated TAX of NEW012 from "0" to "0". 
+Updated NOTES of NEW012 from "" to "". 
+Updated NAME: "NEW012" to "NEW0012". 
+Updated CAPACITY of NEW0012 from "0" to "2". 
+Updated VENDOR of NEW0012 from "UNKNOWN" to "UNKNOWN". 
